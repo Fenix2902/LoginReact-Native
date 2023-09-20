@@ -1,0 +1,42 @@
+--- LoginScreen.js ---
+  // Firebase Auth
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
+import {initializeApp} from 'firebase/app'
+import {firebaseConfig} from '../firebaseconfig'
+
+------------
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+
+    // Método crear cuenta
+    const handleCreateAccount = () => {
+        createUserWithEmailAndPassword(auth,email,password)
+        .then((userCredential)=>{
+            setMessage('Cuenta creada exitosamente ...');
+            const user = userCredential.user // guardar credenciales del usuario para posterior uso
+            console.log(user) // mostrar credenciales por consola
+        })
+        .catch(error =>{
+            //console.log(error)
+            //setMessage(error.message)
+            setMessage(error.message)
+            
+        })
+    }
+
+    // Método signIn
+    const handleSignIn = ()=>{
+        signInWithEmailAndPassword(auth,email,password)
+        .then((userCredential)=>{
+            setMessage('Inicio de sesión exitoso ...');
+            const user = userCredential.user // guardar credenciales del usuario para posterior uso
+            console.log(user) // mostrar credenciales por consola
+        })
+        .catch(error =>{
+            console.log(error.message)
+            setMessage(error.message)
+            setMessage("Correo y/o contraseña inválidos....");
+            
+        })
+    }
