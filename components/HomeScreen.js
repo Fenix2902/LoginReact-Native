@@ -20,7 +20,7 @@ export default function HomeScreen({navigation, route}) {
   const onSubmit = (data) => console.log(data);
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Bienvenid@ {route.params.email}</Text>
+      {/* <Text>Bienvenid@ {route.params.email}</Text> */}
       {/* controlador id */}
       <Controller
         control={control}
